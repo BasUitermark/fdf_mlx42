@@ -25,7 +25,7 @@ static void	setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 	incr->y = ft_axis(start.y, end.y);
 }
 
-void	draw_line(t_init *init, t_coord start, t_coord end)
+void	draw_line(t_mlx_data *mlx, t_coord start, t_coord end)
 {
 	t_coord	diff;
 	t_coord	incr;
@@ -37,7 +37,7 @@ void	draw_line(t_init *init, t_coord start, t_coord end)
 	cur = end;
 	while (true)
 	{
-		pixelput(&init->img, cur, 0xFFFFFF);
+		mlx_put_pixel(mlx, cur.x, cur.y, 0xFFFFFF);
 		if (cur.x == start.x && cur.y == start.y)
 			break ;
 		if (boundary_value >= 0)
@@ -51,5 +51,5 @@ void	draw_line(t_init *init, t_coord start, t_coord end)
 			boundary_value += 2 * diff.y;
 		}
 	}
-	mlx_put_image_to_window(init->mlx, init->mlx_win, init->img.img, 0, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
 }

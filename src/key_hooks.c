@@ -2,7 +2,7 @@
 
 static void	close_win(t_mlx_data *mlx)
 {
-	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_terminate(mlx);
 	exit(EXIT_SUCCESS);
 }
 

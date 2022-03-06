@@ -3,7 +3,7 @@
 # include <math.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "../include/mlx/mlx.h"
+# include "../include/MLX42/include/MLX42/MLX42.h"
 # include "../include/libft/include/libft.h"
 # include <stdio.h> //DELETE THIS
 # define WIDTH 1920
@@ -29,9 +29,8 @@ typedef struct s_mlx_data
 
 typedef struct s_coord
 {
-	int	width;
-	int	depth;
-	int	height;
+	int	x;
+	int	y;
 }	t_coord;
 
 typedef struct s_map
