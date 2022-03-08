@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../include/fdf.h"
 
 void	error(char *error_msg)
 {

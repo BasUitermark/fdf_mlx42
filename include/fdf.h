@@ -11,22 +11,6 @@
 
 //== Structs ==//
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
-typedef struct s_mlx_data
-{
-	void	*mlx;
-	void	*win;
-	t_data	img;
-}	t_mlx_data;
-
 typedef struct s_coord
 {
 	int	x;
@@ -42,13 +26,12 @@ typedef struct s_map
 
 //== Functions ==//
 
-void	ft_draw_line(t_mlx_data *init, t_coord start, t_coord end);
-t_map	parse_map(char *filepath);
+int		main(int argc, char const **argv);
+void	draw_line(mlx_t *mlx, mlx_image_t *img, t_coord start, t_coord end);
+t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
-int		key_hooks(int key, t_mlx_data *mlx);
-int		initialize(t_mlx_data *mlx, int width, int height, char *title);
-
-//== Defs ==//
-# define ESC_KEY 53
+void	key_hooks(void *param);
+int		initialize(mlx_t **mlx, char *title);
+void	project_map(mlx_t *mlx, mlx_image_t *img, t_map map);
 
 #endif

@@ -1,14 +1,10 @@
-#include "fdf.h"
+#include "../include/fdf.h"
 
-static void	close_win(t_mlx_data *mlx)
+void	key_hooks(void *param)
 {
-	mlx_terminate(mlx);
-	exit(EXIT_SUCCESS);
-}
+	mlx_t	*mlx;
 
-int	key_hooks(int key, t_mlx_data *mlx)
-{
-	if (key == ESC_KEY)
-		close_win(mlx);
-	return (0);
+	mlx = param;
+	if (mlx_is_key_down(param, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
 }

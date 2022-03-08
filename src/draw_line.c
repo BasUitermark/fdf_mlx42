@@ -1,13 +1,4 @@
-#include "fdf.h"
-
-static void	pixelput(t_data *data, t_coord coord, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (coord.y * data->line_length + coord.x * \
-		(data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
+#include "../include/fdf.h"
 
 static int	axis(int start, int end)
 {
@@ -21,11 +12,11 @@ static void	setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 {
 	diff->x = ft_abs(start.x - end.x);
 	diff->y = ft_abs(start.y - end.y);
-	incr->x = ft_axis(start.x, end.x);
-	incr->y = ft_axis(start.y, end.y);
+	incr->x = axis(start.x, end.x);
+	incr->y = axis(start.y, end.y);
 }
 
-void	draw_line(t_mlx_data *mlx, t_coord start, t_coord end)
+void	draw_line(mlx_t *mlx, mlx_image_t *img, t_coord start, t_coord end)
 {
 	t_coord	diff;
 	t_coord	incr;
@@ -37,7 +28,7 @@ void	draw_line(t_mlx_data *mlx, t_coord start, t_coord end)
 	cur = end;
 	while (true)
 	{
-		mlx_put_pixel(mlx, cur.x, cur.y, 0xFFFFFF);
+		mlx_put_pixel(img, cur.x, cur.y, 0xFFFFFF);
 		if (cur.x == start.x && cur.y == start.y)
 			break ;
 		if (boundary_value >= 0)
@@ -51,5 +42,5 @@ void	draw_line(t_mlx_data *mlx, t_coord start, t_coord end)
 			boundary_value += 2 * diff.y;
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
+	mlx_image_to_window(mlx, img, 0, 0);
 }

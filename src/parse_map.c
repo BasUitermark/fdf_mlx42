@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../include/fdf.h"
 
 static int	count_width(char *str_map)
 {
@@ -47,7 +47,7 @@ static t_map	process(char *str_map, int depth_count)
 	return (map);
 }
 
-t_map	parse_map(char *filepath)
+t_map	parse_map(const char *filepath)
 {
 	int		fd;
 	int		depth_count;
