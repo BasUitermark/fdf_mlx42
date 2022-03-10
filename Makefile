@@ -12,12 +12,18 @@ OBJS		= $(subst src, objs, $(SRCS:.c=.o))
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
+OS			= $(shell uname)
 
 #==Include files==#
 FDF			= include/
 MLX42		= include/MLX42/
 LIBFT		= include/libft/
-GLFW		= -lglfw -L "/Users/buiterma/.brew/opt/glfw/lib/"
+
+ifeq ($(OS),Linux)
+			GLFW = MLX42/mlx42.a -ldl -lglfw -I MLX42/include -g
+else
+			GLFW = -lglfw -L "/Users/buiterma/.brew/opt/glfw/lib/"
+endif
 
 #==Headers==#
 HEADERS		= -I $(MLX42) -I $(LIBFT) -I $(FDF)
@@ -42,16 +48,22 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 
 all: message mlx libft $(NAME)
 
+run:
+	@./$(NAME) $(ARGS)
+
+#==FdF Compiling==
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) $(GLFW) $(HEADERS) $(LIBFT)/libft.a $(MLX42)/libmlx42.a -o $(NAME)
+	@printf "$(GREEN)Program FdF created!$(RESET)\n"
+
+#==Co
 message:
+	@printf "$(GREEN)You are using $(OS)$(RESET)\n"
 	@printf "$(MAGENTA)Compiling FdF...\n$(RESET)"
 
 objs/%.o: src/%.c
 	@mkdir -p objs
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
-
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(GLFW) $(HEADERS) $(LIBFT)/libft.a $(MLX42)/libmlx42.a -o $(NAME)
-	@printf "$(GREEN)Program FdF created!$(RESET)\n"
 
 #==MLX42 Compile==#
 mlx:
@@ -86,4 +98,4 @@ fclean: clean
 re:		fclean all
 
 #==To not confuse make==#
-.PHONY: all, clean, fclean, re, message
+.PHONY: all, clean, fclean, re, message, run
