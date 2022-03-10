@@ -104,7 +104,7 @@ all: message $(NAME)
 #===============================================================================: Main compile
 $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@printf "$(GREEN)✅Library $(NAME) created!$(RESET)\n\n"
+	@printf "$(GREEN)✅Library $(NAME) created!$(RESET)\n"
 
 #===============================================================================: C file compile
 objs/%.o: src/%.c
