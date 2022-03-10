@@ -20,7 +20,7 @@ MLX42		= include/MLX42/
 LIBFT		= include/libft/
 
 ifeq ($(OS),Linux)
-			GLFW = MLX42/mlx42.a -ldl -lglfw -I MLX42/include -g
+			GLFW = include/MLX42/libmlx42.a -ldl -lglfw -I MLX42/include -g
 else
 			GLFW = -lglfw -L "/Users/buiterma/.brew/opt/glfw/lib/"
 endif
@@ -75,24 +75,24 @@ libft:
 
 #==Remove object files==#
 clean:
-		@$(RM) $(OBJS)
-		@$(RM) -r objs/
-		@$(MAKE) -C $(LIBFT) clean
-		@$(MAKE) -C $(MLX42) clean
-		@printf "$(RED)Removed objects!$(RESET)\n"
+	@$(RM) $(OBJS)
+	@$(RM) -r objs/
+	@$(MAKE) -C $(LIBFT) clean
+	@$(MAKE) -C $(MLX42) clean
+	@printf "$(RED)Removed objects!$(RESET)\n"
 
 cleanfdf:
-		@$(RM) $(OBJS)
-		@$(RM) -r objs/
-		@$(RM) $(NAME)
-		@printf "$(RED)Cleaned FdF!$(RESET)\n"
+	@$(RM) $(OBJS)
+	@$(RM) -r objs/
+	@$(RM) $(NAME)
+	@printf "$(RED)Cleaned FdF!$(RESET)\n"
 
 #==Remove object files and library file==#
 fclean: clean
-		@$(RM) $(NAME)
-		@$(MAKE) -C $(LIBFT) fclean
-		@$(MAKE) -C $(MLX42) fclean
-		@printf "$(RED)Cleaned FdF & Libraries!$(RESET)\n"
+	@$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT) fclean
+	@$(MAKE) -C $(MLX42) fclean
+	@printf "$(RED)Cleaned FdF & Libraries!$(RESET)\n"
 
 #==Remove object files, library file and remake library==#
 re:		fclean all
