@@ -6,7 +6,7 @@
 #    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/26 21:36:38 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/02/26 22:12:31 by W2Wizard      ########   odam.nl          #
+#    Updated: 2022/03/10 16:48:41 by buiterma      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,25 +35,38 @@ all: $(SHDR) $(NAME)
 
 # Convert our shaders to .c files
 src/mlx_vert.c: shaders/default.vert
+ifeq ($(DB),1)
 	@echo "$(GREEN)$(BOLD)Converting shader: $< -> $@ $(RESET)"
+endif
 	@python3 tools/compile_shader.py $^ > $@
 
 src/mlx_frag.c: shaders/default.frag 
+ifeq ($(DB),1)
 	@echo "$(GREEN)$(BOLD)Converting shader: $< -> $@ $(RESET)"
+endif
 	@python3 tools/compile_shader.py $^ > $@
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+ifeq ($(DB),1)
+	@printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
+endif
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
-	@printf "$(GREEN)$(BOLD)Done\n$(RESET)"
+ifeq ($(DB),1)
+	@printf "$(GREEN)$(BOLD)Done\n\n$(RESET)"
+endif
 
 clean:
+ifeq ($(DB),1)
 	@echo "$(RED)Cleaning$(RESET)"
+endif
 	@rm -f $(OBJS) $(SHDR)
 
 fclean: clean
+ifeq ($(DB),1)
 	@rm -f $(NAME)
+endif
 
 re:	fclean all

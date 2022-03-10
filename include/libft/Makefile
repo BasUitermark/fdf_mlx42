@@ -1,27 +1,28 @@
-#==Filename==#
+#===============================================================================: Filename
 NAME		= libft.a
 
+#===============================================================================: Directory paths
 SRCS_DIRS	= $(addprefix src/, $(dir))
 OBJS_DIRS	= $(addprefix objs/, $(dir))
 
-#==Source to object convertion location==#
+#===============================================================================: Source to object convertion location
 OBJS		= $(subst src, objs, $(SRCS:.c=.o))
 
-#==Compile variables==#
-CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
-AR			= ar rcs
-RM			= rm -f
-
-#==Color codes==#
+#===============================================================================: Color codes
 GREEN		= \033[1;32m
 RED			= \033[1;31m
 BLUE		= \033[1;34m
 MAGENTA		= \033[1;35m
 RESET		= \033[0m
 
-#==Sourcefiles==#
-#Note: Only filename needed. "addprefix" and "addsuffix" add filepath and filetype.
+#===============================================================================: Compile variables
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
+AR			= ar rcs
+RM			= rm -rf
+MKDIR		= mkdir -p objs
+
+#===============================================================================: Sourcefiles==#
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			ft_abs \
 			ft_atoi \
@@ -97,33 +98,39 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 			ft_tolower \
 			ft_toupper))
 
-#==Compile==#
+#===============================================================================: Make commands
 all: message $(NAME)
 
-message: 
-	@printf "$(MAGENTA)Compiling libft...\n$(RESET)"
-
-objs/%.o: src/%.c
-	@mkdir -p objs
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(GREEN)\rCompiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
-
-#==File Compile==#
+#===============================================================================: Main compile
 $(NAME): $(OBJS)
-		@$(AR) $(NAME) $(OBJS)
-		@printf "$(GREEN)Library $(NAME) created!$(RESET)\n\n"
+	@$(AR) $(NAME) $(OBJS)
+	@printf "$(GREEN)✅Library $(NAME) created!$(RESET)\n\n"
 
-#==Remove object files==#
+#===============================================================================: C file compile
+objs/%.o: src/%.c
+	@$(MKDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+ifeq ($(DB),1)
+	@printf "$(GREEN)\r🔨Compiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
+endif
+
+#===============================================================================: Build messages
+message: 
+	@printf "$(GREEN)🔨Compiling $(NAME)...\n$(RESET)"
+
+#===============================================================================: Remove all object files
 clean:
-		@$(RM) -r objs
-		@printf "$(RED)Removed all libft objects!$(RESET)\n\n"
+	@$(RM) objs
+	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
 
-#==Remove object files and library file==#
-fclean: clean
-		@$(RM) $(NAME)
-		@printf "$(RED)$(RESET)\n"
+#===============================================================================: Remove all object files and executable
+fclean:
+	@$(RM) objs
+	@$(RM) $(NAME)
+	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
+	@printf "$(RED)🧹Removed $(NAME)!$(RESET)\n"
 
-#==Remove object files, library file and remake library==#
+#===============================================================================: Remove all object files, executable and remake library
 re:		fclean all
 
 .PHONY: all, clean, fclean, re, message
