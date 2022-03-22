@@ -24,9 +24,9 @@ HEADERS		= -I $(MLX42) -I $(LIBFT) -I $(FDF)
 OS			= $(shell uname)
 
 #===============================================================================: Include files
-FDF			= include/
-MLX42		= include/MLX42/
-LIBFT		= include/libft/
+FDF			= include
+MLX42		= include/MLX42
+LIBFT		= include/libft
 
 #===============================================================================: OS checker
 ifeq ($(OS),Linux)
@@ -62,13 +62,13 @@ ifeq ($(DB),1)
 endif
 
 #===============================================================================: Executable run command
-run:
-	@./$(NAME) $(ARGS)
+run: all
+	@./$(NAME) maps/$(MAP)
 
 #===============================================================================: Build messages
 message:
 	@printf "$(GREEN)You are using $(OS)$(RESET)\n"
-	@printf "$(MAGENTA)🔨Building $(NAME)\n$(RESET)\n"
+	@printf "$(MAGENTA)🔨Building \"$(NAME)\"\n$(RESET)\n"
 
 #===============================================================================: MLX42 Compile
 mlx:
@@ -83,13 +83,13 @@ clean:
 	@$(RM) objs/
 	@$(MAKE) -C $(LIBFT) clean
 	@$(MAKE) -C $(MLX42) clean
-	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
+	@printf "$(RED)🧹Removed objects for \"$(NAME)\"!$(RESET)\n"
 
 #===============================================================================: Remove project object files & executable
 cleanfdf:
 	@$(RM) objs/
 	@$(RM) $(NAME)
-	@printf "$(RED)🧹Removed current objects & current executable for $(NAME)$(RESET)\n"
+	@printf "$(RED)🧹Removed current objects & current executable for \"$(NAME)\"$(RESET)\n"
 
 #===============================================================================: Remove all object files and executable
 fclean:
@@ -97,8 +97,8 @@ fclean:
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT) fclean
 	@$(MAKE) -C $(MLX42) fclean
-	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
-	@printf "$(RED)🧹Removed $(NAME)!$(RESET)\n"
+	@printf "$(RED)🧹Removed objects for \"$(NAME)\"!$(RESET)\n"
+	@printf "$(RED)🧹Removed \"$(NAME)\"!$(RESET)\n"
 
 #===============================================================================: Remove all object files, executable and remake executable
 re:		fclean all

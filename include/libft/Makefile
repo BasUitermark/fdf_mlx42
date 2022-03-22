@@ -104,7 +104,7 @@ all: message $(NAME)
 #===============================================================================: Main compile
 $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@printf "$(GREEN)✅Library $(NAME) created!$(RESET)\n"
+	@printf "$(GREEN)✅Library \"$(NAME)\" created!$(RESET)\n"
 
 #===============================================================================: C file compile
 objs/%.o: src/%.c
@@ -116,19 +116,19 @@ endif
 
 #===============================================================================: Build messages
 message: 
-	@printf "$(GREEN)🔨Compiling $(NAME)...\n$(RESET)"
+	@printf "$(GREEN)🔨Compiling \"$(NAME)\"...\n$(RESET)"
 
 #===============================================================================: Remove all object files
 clean:
 	@$(RM) objs
-	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
+	@printf "$(RED)🧹Removed objects for \"$(NAME)\"!$(RESET)\n"
 
 #===============================================================================: Remove all object files and executable
 fclean:
 	@$(RM) objs
 	@$(RM) $(NAME)
-	@printf "$(RED)🧹Removed objects for $(NAME)!$(RESET)\n"
-	@printf "$(RED)🧹Removed $(NAME)!$(RESET)\n"
+	@printf "$(RED)🧹Removed objects for \"$(NAME)\"!$(RESET)\n"
+	@printf "$(RED)🧹Removed \"$(NAME)\"!$(RESET)\n"
 
 #===============================================================================: Remove all object files, executable and remake library
 re:		fclean all

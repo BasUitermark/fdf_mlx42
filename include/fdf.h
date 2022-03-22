@@ -24,6 +24,14 @@ typedef struct s_map
 	int	map_depth;
 }	t_map;
 
+typedef struct s_instance
+{
+	t_coord		coord;
+	t_map		map;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+}	t_instance;
+
 //== Functions ==//
 
 int		main(int argc, char const **argv);
@@ -32,6 +40,6 @@ t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
 void	key_hooks(void *param);
 int		initialize(mlx_t **mlx, char *title);
-void	project_map(mlx_t *mlx, mlx_image_t *img, t_map map);
+void	project_map(t_instance fdf);
 
 #endif
