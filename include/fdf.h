@@ -8,6 +8,7 @@
 # include <stdio.h> //DELETE THIS
 # define WIDTH 1920
 # define HEIGHT 1080
+# define GRIDSIZE 25
 
 //== Structs ==//
 
@@ -21,12 +22,11 @@ typedef struct s_map
 {
 	int	*map_points;
 	int	map_width;
-	int	map_depth;
+	int	map_height;
 }	t_map;
 
 typedef struct s_instance
 {
-	t_coord		coord;
 	t_map		map;
 	mlx_t		*mlx;
 	mlx_image_t	*img;

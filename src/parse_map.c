@@ -31,7 +31,7 @@ static t_map	process(char *str_map, int depth_count)
 
 	i = 0;
 	num = -1;
-	map.map_depth = depth_count;
+	map.map_height = depth_count;
 	map.map_width = count_width(str_map);
 	map.map_points = (int *)ft_calloc(depth_count * map.map_width, sizeof(int));
 	while (str_map[i])

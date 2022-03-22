@@ -39,7 +39,7 @@ endif
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			draw_line \
 			parse_map \
-			initialize \
+			initialize \ 
 			key_hooks \
 			error \
 			project_map \
@@ -62,7 +62,7 @@ ifeq ($(DB),1)
 endif
 
 #===============================================================================: Executable run command
-run: all
+run: cleanfdf all
 	@./$(NAME) maps/$(MAP)
 
 #===============================================================================: Build messages
@@ -75,7 +75,7 @@ mlx:
 	@$(MAKE) -C $(MLX42)
 
 #===============================================================================: Libft Compile
-libft: 
+libft:
 	@$(MAKE) -C $(LIBFT)
 
 #===============================================================================: Remove all object files
@@ -101,7 +101,7 @@ fclean:
 	@printf "$(RED)🧹Removed \"$(NAME)\"!$(RESET)\n"
 
 #===============================================================================: Remove all object files, executable and remake executable
-re:		fclean all
+re: fclean all
 
 #===============================================================================: To not confuse make
 .PHONY: all, clean, fclean, re, message, run
