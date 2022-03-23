@@ -6,7 +6,7 @@ int	main(int argc, char const **argv)
 
 	if (argc != 2)
 		error("Wrong map input!");
-	if (initialize(&fdf.mlx, "Fuck Deze F"))
+	if (initialize(&fdf.mlx, "FdF"))
 	{
 		fdf.map = parse_map(argv[1]);
 		fdf.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);

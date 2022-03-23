@@ -39,7 +39,7 @@ endif
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			draw_line \
 			parse_map \
-			initialize \ 
+			initialize \
 			key_hooks \
 			error \
 			project_map \

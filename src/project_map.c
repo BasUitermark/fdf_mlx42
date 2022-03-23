@@ -1,6 +1,6 @@
 #include "../include/fdf.h"
 
-t_coord	translate_coord(int x, int y)
+static t_coord	translate_coord(int x, int y)
 {
 	t_coord	coord;
 
@@ -9,7 +9,7 @@ t_coord	translate_coord(int x, int y)
 	return (coord);
 }
 
-void	isometric(int *x, int *y)
+static void	isometric(int *x, int *y)
 {
 	int	temp_x;
 	int	temp_y;
@@ -20,22 +20,29 @@ void	isometric(int *x, int *y)
 	*y = (temp_x + temp_y) * sin(0.523599);
 }
 
-t_coord	calc_coord(int x, int y)
+static t_coord	calc_coord(int x, int y, int z)
 {
 	x *= GRIDSIZE;
 	y *= GRIDSIZE;
 	isometric(&x, &y);
 	x += WIDTH / 2;
-	y += HEIGHT / 2;
+	y += -z + HEIGHT / 2;
 	return (translate_coord(x, y));
 }
 
-void	grid_line(int x, int y, t_instance fdf)
+static int	search_height(t_instance fdf, int x, int y)
+{
+	return (fdf.map.map_points[y * fdf.map.map_width + x] * Z_OFFSET);
+}
+
+static void	draw_grid(int x, int y, t_instance fdf)
 {
 	if (x != fdf.map.map_width - 1)
-		draw_line(fdf.mlx, fdf.img, calc_coord(x, y), calc_coord(x + 1, y));
+		draw_line(fdf.mlx, fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
+		calc_coord(x + 1, y, search_height(fdf, x + 1, y)));
 	if (y != fdf.map.map_height - 1)
-		draw_line(fdf.mlx, fdf.img, calc_coord(x, y), calc_coord(x, y + 1));
+		draw_line(fdf.mlx, fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
+		calc_coord(x, y + 1, search_height(fdf, x, y + 1)));
 }
 
 void	project_map(t_instance fdf)
@@ -49,7 +56,7 @@ void	project_map(t_instance fdf)
 	{
 		while (x < fdf.map.map_width)
 		{
-			grid_line(x, y, fdf);
+			draw_grid(x, y, fdf);
 			x++;
 		}
 		x = 0;
