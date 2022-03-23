@@ -52,6 +52,7 @@ void	project_map(t_instance fdf)
 
 	x = 0;
 	y = 0;
+	// check_map_size(fdf);
 	while (y < fdf.map.map_height)
 	{
 		while (x < fdf.map.map_width)

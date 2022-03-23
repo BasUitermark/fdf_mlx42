@@ -5,8 +5,8 @@ void	print_struct(t_map map)
 	int	i = 0;
 	int	j = 0;
 
-	printf("Width: %d\nDepth: %d\n", map.map_width, map.map_depth);
-	while (i < (map.map_depth * map.map_width))
+	printf("Width: %d\nDepth: %d\n", map.map_width, map.map_height);
+	while (i < (map.map_height * map.map_width))
 	{
 		while (j < map.map_width)
 		{

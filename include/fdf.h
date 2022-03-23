@@ -9,7 +9,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define GRIDSIZE 25
-# define Z_OFFSET 2
+# define Z_OFFSET 5
 
 //== Structs ==//
 
