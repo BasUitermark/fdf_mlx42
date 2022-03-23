@@ -36,7 +36,7 @@ typedef struct s_instance
 //== Functions ==//
 
 int		main(int argc, char const **argv);
-void	draw_line(mlx_t *mlx, mlx_image_t *img, t_coord start, t_coord end);
+void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
 t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
 void	key_hooks(void *param);

@@ -38,10 +38,10 @@ static int	search_height(t_instance fdf, int x, int y)
 static void	draw_grid(int x, int y, t_instance fdf)
 {
 	if (x != fdf.map.map_width - 1)
-		draw_line(fdf.mlx, fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
+		draw_line(fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
 		calc_coord(x + 1, y, search_height(fdf, x + 1, y)));
 	if (y != fdf.map.map_height - 1)
-		draw_line(fdf.mlx, fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
+		draw_line(fdf.img, calc_coord(x, y, search_height(fdf, x, y)), \
 		calc_coord(x, y + 1, search_height(fdf, x, y + 1)));
 }
 

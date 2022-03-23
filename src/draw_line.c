@@ -16,7 +16,7 @@ static void	setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 	incr->y = axis(start.y, end.y);
 }
 
-void	draw_line(mlx_t *mlx, mlx_image_t *img, t_coord start, t_coord end)
+void	draw_line(mlx_image_t *img, t_coord start, t_coord end)
 {
 	t_coord	diff;
 	t_coord	incr;
@@ -42,5 +42,4 @@ void	draw_line(mlx_t *mlx, mlx_image_t *img, t_coord start, t_coord end)
 			boundary_value += 2 * diff.y;
 		}
 	}
-	mlx_image_to_window(mlx, img, 0, 0);
 }
