@@ -53,6 +53,7 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 			ft_lstnew \
 			ft_lstadd_front \
 			ft_lstsize \
+			ft_max \
 			ft_lstlast \
 			ft_lstadd_back \
 			ft_lstdelone \
@@ -64,6 +65,7 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 			ft_memcpy \
 			ft_memmove \
 			ft_memset \
+			ft_min \
 			ft_neg \
 			ft_pos \
 			ft_printcarray \

@@ -43,6 +43,7 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 			key_hooks \
 			error \
 			project_map \
+			grid_setup \
 			main))
 
 #===============================================================================: Make commands
@@ -58,7 +59,7 @@ objs/%.o: src/%.c
 	@$(MKDIR)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 ifeq ($(DB),1)
-		@printf "$(GREEN)\r🔨Compiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
+	@printf "$(GREEN)\r🔨Compiling: $(MAGENTA)$(notdir $<)$(GREEN)\r\e[35C[OK]\n$(RESET)"
 endif
 
 #===============================================================================: Executable run command

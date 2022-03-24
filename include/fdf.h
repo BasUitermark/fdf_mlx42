@@ -8,8 +8,6 @@
 # include <stdio.h> //DELETE THIS
 # define WIDTH 1920
 # define HEIGHT 1080
-# define GRIDSIZE 25
-# define Z_OFFSET 5
 
 //== Structs ==//
 
@@ -26,21 +24,32 @@ typedef struct s_map
 	int	map_height;
 }	t_map;
 
+typedef struct s_grid
+{
+	int		size;
+	int		x_offset;
+	int		y_offset;
+	int		z_offset;
+	double	height_mod;
+}	t_grid;
+
 typedef struct s_instance
 {
 	t_map		map;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_grid		grid;
 }	t_instance;
 
 //== Functions ==//
 
 int		main(int argc, char const **argv);
-void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
+int		initialize(mlx_t **mlx, char *title);
 t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
-void	key_hooks(void *param);
-int		initialize(mlx_t **mlx, char *title);
+void	initialize_grid(t_instance *fdf);
+void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
 void	project_map(t_instance fdf);
+void	key_hooks(void *param);
 
 #endif

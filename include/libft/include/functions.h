@@ -350,6 +350,22 @@ int		ft_pos(int n);
  */
 int		ft_intlen(int n);
 
+/**
+ * @brief 
+ * 
+ * @param n 
+ * @return int 
+ */
+int		ft_min(int *array, int size);
+
+/**
+ * @brief 
+ * 
+ * @param n 
+ * @return int 
+ */
+int		ft_max(int *array, int size);
+
 //==Filedescriptor Functions ==//
 
 /**

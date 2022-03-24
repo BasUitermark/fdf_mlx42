@@ -18,7 +18,10 @@ static int	count_width(char *str_map)
 		if (str_map[i] == ' ' || str_map[i] == '-')
 			i++;
 		if (str_map[i] == ',')
-			i += 9;
+		{
+			while (!ft_isspace(str_map[i]))
+				i++;
+		}
 	}
 	return (width_count);
 }
