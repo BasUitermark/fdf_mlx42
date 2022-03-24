@@ -13,7 +13,7 @@ static double	set_height_mod(t_instance *fdf)
 	height_mod = 1.0;
 	diff = (double)difference(fdf->map.map_points, \
 	fdf->map.map_height * fdf->map.map_width);
-	while (diff > 5)
+	while (diff > 10)
 	{
 		diff *= 0.5;
 		height_mod *= 0.65;
@@ -42,7 +42,7 @@ static double	calc_diag(t_instance *fdf)
 static void	check_grid(t_instance *fdf)
 {
 	while (calc_diag(fdf) + sin(0.523599) * (HEIGHT / 2) > HEIGHT)
-		fdf->grid.size -= 2;
+		fdf->grid.size -= 1;
 	while (calc_diag(fdf) - fdf->grid.y_offset + (HEIGHT / 2) > HEIGHT)
 		fdf->grid.y_offset += 20;
 }
