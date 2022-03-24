@@ -45,3 +45,9 @@ int	main(int argc, char const **argv)
 // 	fdf.map = parse_map("../maps/t1.fdf");
 // 	print_struct(fdf.map);
 // }
+
+//TODO
+/*
+* Clean up files and improve naming
+* Check protections
+*/

@@ -8,3 +8,11 @@ void	key_hooks(void *param)
 	if (mlx_is_key_down(param, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 }
+
+// TODO
+/*
+* Keyhooks for:
+* Moving the grid
+* Zooming in and out
+* Rotating
+*/

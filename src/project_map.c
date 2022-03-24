@@ -64,3 +64,9 @@ void	project_map(t_instance fdf)
 	}
 	mlx_image_to_window(fdf.mlx, fdf.img, 0, 0);
 }
+
+//
+/*
+* Fix projection for julia and elem-fract
+* Add different perspective??
+*/
