@@ -38,12 +38,14 @@ endif
 #===============================================================================: Sourcefiles
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			draw_line \
-			parse_map \
+			map_parsing \
 			initialize \
 			key_hooks \
 			error \
-			project_map \
+			map_projection \
 			grid_setup \
+			location \
+			zoom \
 			main))
 
 #===============================================================================: Make commands

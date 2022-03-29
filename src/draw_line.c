@@ -28,7 +28,8 @@ void	draw_line(mlx_image_t *img, t_coord start, t_coord end)
 	cur = end;
 	while (true)
 	{
-		mlx_put_pixel(img, cur.x, cur.y, 0xFFFFFFFF);
+		if (cur.x < WIDTH && cur.x > 0 && cur.y < HEIGHT && cur.y > 0)
+			mlx_put_pixel(img, cur.x, cur.y, 0xFFFFFFFF);
 		if (cur.x == start.x && cur.y == start.y)
 			break ;
 		if (boundary_value >= 0)

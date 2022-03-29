@@ -50,6 +50,10 @@ void	error(char *error_msg);
 void	initialize_grid(t_instance *fdf);
 void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
 void	project_map(t_instance fdf);
+void	close_hook(void *param);
 void	key_hooks(void *param);
+void	location(t_instance *fdf);
+void	scroll(mlx_keyfunc *func, void *param);
+void	zoom(t_instance *fdf);
 
 #endif
