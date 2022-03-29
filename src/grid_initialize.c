@@ -30,9 +30,6 @@ static void	set_grid_param(t_instance *fdf)
 	fdf->grid.z_offset = 10 * fdf->grid.height_mod;
 }
 
-// d = √(l² + w²)
-// sqrt(pow(width, 2) + pow(height, 2)) * gridsize
-
 static double	calc_diag(t_instance *fdf)
 {
 	return (sqrt(pow(fdf->map.map_width, 2) + \

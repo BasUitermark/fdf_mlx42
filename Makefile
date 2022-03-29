@@ -39,11 +39,12 @@ endif
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			draw_line \
 			map_parsing \
-			initialize \
+			fdf_initialize \
 			key_hooks \
 			error \
 			map_projection \
-			grid_setup \
+			calculate_coordinates \
+			grid_initialize \
 			location \
 			zoom \
 			main))

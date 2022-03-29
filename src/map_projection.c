@@ -1,33 +1,15 @@
 #include "../include/fdf.h"
 
-static t_coord	translate_coord(int x, int y)
+static void	put_instructions(t_instance fdf)
 {
-	t_coord	coord;
+	int	x;
+	int	y;
 
-	coord.x = x;
-	coord.y = y;
-	return (coord);
-}
-
-static void	isometric(int *x, int *y)
-{
-	int	temp_x;
-	int	temp_y;
-
-	temp_x = *x;
-	temp_y = *y;
-	*x = (temp_x - temp_y) * cos(0.523599);
-	*y = (temp_x + temp_y) * sin(0.523599);
-}
-
-static t_coord	calc_coord(t_instance fdf, int x, int y, int z)
-{
-	x *= fdf.grid.size;
-	y *= fdf.grid.size;
-	isometric(&x, &y);
-	x += WIDTH / 2 - fdf.grid.x_offset;
-	y += -z + HEIGHT / 2 - fdf.grid.y_offset;
-	return (translate_coord(x, y));
+	x = 10;
+	y = 10;
+	mlx_put_string(fdf.mlx, "Instructions:", x, y);
+	mlx_put_string(fdf.mlx, "Move map:		W/A/S/D", x, y += 20);
+	mlx_put_string(fdf.mlx, "Scale map:		Q/E", x, y += 20);
 }
 
 static int	get_height(t_instance fdf, int x, int y)
@@ -52,7 +34,6 @@ void	project_map(t_instance fdf)
 
 	x = 0;
 	y = 0;
-	mlx_put_string(fdf.mlx, "Hello there", 0, 0);
 	while (y < fdf.map.map_height)
 	{
 		while (x < fdf.map.map_width)
@@ -63,5 +44,6 @@ void	project_map(t_instance fdf)
 		x = 0;
 		y++;
 	}
+	put_instructions(fdf);
 	mlx_image_to_window(fdf.mlx, fdf.img, 0, 0);
 }

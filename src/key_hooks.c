@@ -10,7 +10,8 @@ void	key_hooks(void *param)
 	mlx_is_key_down(fdf->mlx, MLX_KEY_S) || \
 	mlx_is_key_down(fdf->mlx, MLX_KEY_D))
 		location(fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q) || mlx_is_key_down(fdf->mlx, MLX_KEY_E))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_E))
 		zoom(fdf);
 }
 
@@ -25,11 +26,3 @@ void	close_hook(void *param)
 		exit(EXIT_SUCCESS);
 	}
 }
-
-// TODO
-/*
-* Keyhooks for:
-* Moving the grid
-* Zooming in and out
-* Rotating
-*/
