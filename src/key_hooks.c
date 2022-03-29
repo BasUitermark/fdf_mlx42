@@ -25,3 +25,11 @@ void	close_hook(void *param)
 		exit(EXIT_SUCCESS);
 	}
 }
+
+// TODO
+/*
+* Keyhooks for:
+* Moving the grid
+* Zooming in and out
+* Rotating
+*/

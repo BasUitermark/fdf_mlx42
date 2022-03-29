@@ -30,7 +30,7 @@ LIBFT		= include/libft
 
 #===============================================================================: OS checker
 ifeq ($(OS),Linux)
-			GLFW = include/MLX42/libmlx42.a -ldl -lglfw -I MLX42/include -g
+			GLFW = include/MLX42/libmlx42.a -ldl -lglfw -I MLX42/include -g -lm
 else
 			GLFW = -lglfw -L "/Users/buiterma/.brew/opt/glfw/lib/"
 endif
