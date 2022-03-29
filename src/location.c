@@ -10,23 +10,12 @@ static void	execute_move(t_instance *fdf)
 void	location(t_instance *fdf)
 {
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
-	{
 		fdf->grid.y_offset += (1 * fdf->grid.size);
-		execute_move(fdf);
-	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-	{
 		fdf->grid.y_offset -= (1 * fdf->grid.size);
-		execute_move(fdf);
-	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-	{
 		fdf->grid.x_offset += (1 * fdf->grid.size);
-		execute_move(fdf);
-	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
-	{
 		fdf->grid.x_offset -= (1 * fdf->grid.size);
-		execute_move(fdf);
-	}
+	execute_move(fdf);
 }

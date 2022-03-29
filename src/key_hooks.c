@@ -13,6 +13,14 @@ void	key_hooks(void *param)
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q) || \
 	mlx_is_key_down(fdf->mlx, MLX_KEY_E))
 		zoom(fdf);
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_R) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_T) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_F) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_G) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_V) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_B) || \
+	mlx_is_key_down(fdf->mlx, MLX_KEY_0))
+		rotation(fdf);
 }
 
 void	close_hook(void *param)

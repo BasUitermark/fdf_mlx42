@@ -31,6 +31,9 @@ typedef struct s_grid
 	int		y_offset;
 	int		z_offset;
 	double	height_mod;
+	double	x_rot;
+	double	y_rot;
+	double	z_rot;
 }	t_grid;
 
 typedef struct s_instance
@@ -56,5 +59,6 @@ void	key_hooks(void *param);
 void	location(t_instance *fdf);
 void	scroll(mlx_keyfunc *func, void *param);
 void	zoom(t_instance *fdf);
+void	rotation(t_instance *fdf);
 
 #endif

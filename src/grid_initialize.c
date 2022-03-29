@@ -28,6 +28,9 @@ static void	set_grid_param(t_instance *fdf)
 	fdf->grid.y_offset = 0;
 	fdf->grid.height_mod = set_height_mod(fdf);
 	fdf->grid.z_offset = 10 * fdf->grid.height_mod;
+	fdf->grid.x_rot = 0;
+	fdf->grid.y_rot = 0;
+	fdf->grid.z_rot =
 }
 
 static double	calc_diag(t_instance *fdf)
@@ -38,7 +41,7 @@ static double	calc_diag(t_instance *fdf)
 
 static void	check_grid(t_instance *fdf)
 {
-	while (calc_diag(fdf) + sin(0.523599) * (HEIGHT / 2) > HEIGHT)
+	while (calc_diag(fdf) + sin(0.5) * (HEIGHT / 2) > HEIGHT)
 		fdf->grid.size -= 1;
 	while (calc_diag(fdf) - fdf->grid.y_offset + (HEIGHT / 2) > HEIGHT)
 		fdf->grid.y_offset += 20;

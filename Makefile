@@ -47,6 +47,7 @@ SRCS		= $(addprefix src/, $(addsuffix .c, \
 			grid_initialize \
 			location \
 			zoom \
+			rotation \
 			main))
 
 #===============================================================================: Make commands
