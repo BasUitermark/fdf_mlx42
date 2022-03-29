@@ -1,9 +1,5 @@
 #include "../include/fdf.h"
 
-/*
-
-*/
-
 static void	x_rotation(int *y, int *z, double x_rot)
 {
 	int	temp_y;
