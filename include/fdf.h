@@ -47,7 +47,7 @@ typedef struct s_instance
 //== Functions ==//
 
 int		main(int argc, char const **argv);
-int		initialize(mlx_t **mlx, char *title);
+bool	initialize(mlx_t **mlx, char *title);
 t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
 void	initialize_grid(t_instance *fdf);

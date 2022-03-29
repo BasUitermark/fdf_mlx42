@@ -1,5 +1,15 @@
 #include "../include/fdf.h"
 
+/*==============================================================================
+ * Int main checks for argument count and initializes the fdf instance.
+ * It further handles the map parsing function, image setup, 
+ * grid initialization, initial map projection, checks keyhooks
+ * and loops the function.
+ * 
+ * Main expects 1 argument; that is the relative path to a ".fdf" map file
+ * in the "/maps" folder.
+=============================================================================*/
+
 int	main(int argc, char const **argv)
 {
 	t_instance	fdf;
@@ -18,3 +28,10 @@ int	main(int argc, char const **argv)
 	}
 	error("Failed to initialize FdF");
 }
+
+/* TODO
+ * Clean up code and files.
+ * Setup naming scheme.
+ * Check for leaks and malloc protections.
+ * Finish up documentation.
+*/

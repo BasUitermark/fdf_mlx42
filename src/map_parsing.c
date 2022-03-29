@@ -1,5 +1,16 @@
 #include "../include/fdf.h"
 
+/*==============================================================================
+ * Reads an ".fdf" file , through the passed argv argument,stores the data 
+ * in a string and converts it to an int array and stores this in a struct.
+ * It also counts the width and height of the map and stores this in the same
+ * struct.
+ * 
+ * parse_map expects a string that has the relative filepath to the mapfile.
+ * parse map return a t_map struct with: map.map_points, map.map_width, 
+ * map.map_height.
+=============================================================================*/
+
 static int	count_width(char *str_map)
 {
 	int	width_count;

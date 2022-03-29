@@ -30,7 +30,7 @@ static void	set_grid_param(t_instance *fdf)
 	fdf->grid.z_offset = 10 * fdf->grid.height_mod;
 	fdf->grid.x_rot = 0;
 	fdf->grid.y_rot = 0;
-	fdf->grid.z_rot =
+	fdf->grid.z_rot = 0;
 }
 
 static double	calc_diag(t_instance *fdf)
