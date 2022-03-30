@@ -19,9 +19,9 @@ typedef struct s_coord
 
 typedef struct s_map
 {
-	int	*map_points;
-	int	map_width;
-	int	map_height;
+	int	*points;
+	int	width;
+	int	height;
 }	t_map;
 
 typedef struct s_grid
@@ -41,13 +41,13 @@ typedef struct s_instance
 	t_map		map;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	mlx_image_t	*str_img;
 	t_grid		grid;
 }	t_instance;
 
 //== Functions ==//
 
 int		main(int argc, char const **argv);
-bool	initialize(mlx_t **mlx, char *title);
 t_map	parse_map(const char *filepath);
 void	error(char *error_msg);
 void	initialize_grid(t_instance *fdf);

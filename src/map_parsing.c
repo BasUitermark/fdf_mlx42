@@ -45,14 +45,14 @@ static t_map	process(char *str_map, int depth_count)
 
 	i = 0;
 	num = 0;
-	map.map_height = depth_count;
-	map.map_width = count_width(str_map);
-	map.map_points = (int *)ft_calloc(depth_count * map.map_width, sizeof(int));
+	map.height = depth_count;
+	map.width = count_width(str_map);
+	map.points = (int *)ft_calloc(depth_count * map.width, sizeof(int));
 	while (str_map[i])
 	{
 		if (ft_isdigit(str_map[i]) || str_map[i] == '-')
 		{
-			map.map_points[num] = ft_atoi(&str_map[i]);
+			map.points[num] = ft_atoi(&str_map[i]);
 			num++;
 		}
 		while (!ft_isspace(str_map[i]) && str_map[i])

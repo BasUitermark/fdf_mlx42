@@ -39,15 +39,12 @@ endif
 SRCS		= $(addprefix src/, $(addsuffix .c, \
 			draw_line \
 			map_parsing \
-			fdf_initialize \
 			key_hooks \
 			error \
 			map_projection \
 			calculate_coordinates \
 			grid_initialize \
-			location \
-			zoom \
-			rotation \
+			motion \
 			main))
 
 #===============================================================================: Make commands
@@ -67,7 +64,7 @@ ifeq ($(DB),1)
 endif
 
 #===============================================================================: Executable run command
-run: cleanfdf all
+run: all
 	@./$(NAME) maps/$(MAP).fdf
 
 #===============================================================================: Build messages

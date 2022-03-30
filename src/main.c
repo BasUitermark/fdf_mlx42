@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/30 16:02:10 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/03/30 17:40:21 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 /*==============================================================================
@@ -10,6 +22,30 @@
  * in the "/maps" folder.
 =============================================================================*/
 
+static void	put_instructions(t_instance fdf)
+{
+	int	x;
+	int	y;
+
+	x = 10;
+	y = 10;
+	mlx_put_string(fdf.mlx, "Instructions:", x, y);
+	mlx_put_string(fdf.mlx, "Move map:							W/A/S/D", \
+		x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate X axis:		R/T", x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate Y axis:		F/G", x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate Z axis:		V/B", x, y += 20);
+	mlx_put_string(fdf.mlx, "Reset map:						0", x, y += 20);
+}
+
+static bool	initialize(mlx_t **mlx, char *title)
+{
+	*mlx = mlx_init(WIDTH, HEIGHT, title, TRUE);
+	if (!mlx)
+		return (FALSE);
+	return (TRUE);
+}
+
 int	main(int argc, char const **argv)
 {
 	t_instance	fdf;
@@ -21,6 +57,7 @@ int	main(int argc, char const **argv)
 		fdf.map = parse_map(argv[1]);
 		fdf.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
 		initialize_grid(&fdf);
+		put_instructions(fdf);
 		project_map(fdf);
 		mlx_loop_hook(fdf.mlx, &key_hooks, &fdf);
 		mlx_loop_hook(fdf.mlx, &close_hook, &fdf);

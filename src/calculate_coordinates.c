@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   calculate_coordinates.c                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/30 16:02:16 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/03/30 18:46:36 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 static void	x_rotation(int *y, int *z, double x_rot)
@@ -42,7 +54,7 @@ static t_coord	translate_coord(int x, int y)
 	return (coord);
 }
 
-static void	isometric(int *x, int *y)
+static void	initial_rotate(int *x, int *y)
 {
 	int	temp_x;
 	int	temp_y;
@@ -60,7 +72,7 @@ t_coord	calc_coord(t_instance fdf, int x, int y, int z)
 	x_rotation(&y, &z, fdf.grid.x_rot);
 	y_rotation(&x, &z, fdf.grid.y_rot);
 	z_rotation(&x, &y, fdf.grid.z_rot);
-	isometric(&x, &y);
+	initial_rotate(&x, &y);
 	x += WIDTH / 2 - fdf.grid.x_offset;
 	y += -z + HEIGHT / 2 - fdf.grid.y_offset;
 	return (translate_coord(x, y));
