@@ -15,6 +15,11 @@ BLUE		= \033[1;34m
 MAGENTA		= \033[1;35m
 RESET		= \033[0m
 
+#===============================================================================: Include files
+FDF			= include
+MLX42		= include/MLX42
+LIBFT		= include/libft
+
 #===============================================================================: Compile variables
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
@@ -22,11 +27,6 @@ RM			= rm -rf
 MKDIR		= mkdir -p objs
 HEADERS		= -I $(MLX42) -I $(LIBFT) -I $(FDF)
 OS			= $(shell uname)
-
-#===============================================================================: Include files
-FDF			= include
-MLX42		= include/MLX42
-LIBFT		= include/libft
 
 #===============================================================================: OS checker
 ifeq ($(OS),Linux)
