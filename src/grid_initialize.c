@@ -1,15 +1,12 @@
 #include "../include/fdf.h"
 
 /*==============================================================================
- * Initializes the 
+ * set_grid_param initializes the the grid parameters and sets up de z_offset
+ * to make sure the height of the map isn't too big.
  * 
- * 
+ * check_grid makes sure that when the grid is drawn in its initial angled
+ * state it won't go over the boundaries of the window.
 =============================================================================*/
-
-// static int	difference(int *array, int size)
-// {
-// 	return (ft_max(array, size) - ft_min(array, size));
-// }
 
 static double	set_height_mod(t_map map)
 {

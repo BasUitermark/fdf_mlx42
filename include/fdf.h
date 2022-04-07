@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   fdf.h                                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/06 10:20:27 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/04/06 10:20:28 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 # include <math.h>
@@ -53,11 +65,11 @@ void	error(char *error_msg);
 void	initialize_grid(t_instance *fdf);
 void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
 void	project_map(t_instance fdf);
+t_coord	translate_coord(int x, int y);
 t_coord	calc_coord(t_instance fdf, int x, int y, int z);
 void	close_hook(void *param);
 void	key_hooks(void *param);
 void	location(t_instance *fdf);
-void	scroll(mlx_keyfunc *func, void *param);
 void	zoom(t_instance *fdf);
 void	rotation(t_instance *fdf);
 

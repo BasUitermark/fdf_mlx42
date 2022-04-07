@@ -1,4 +1,23 @@
-#include "../include/fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   key_hooks.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/06 10:18:02 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/04/06 10:24:49 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+/*==============================================================================
+ * key_hook controll the input for the location, zoom and rotation.
+ * 
+ * close_hook checks for the closing key, stops rendering mlx and terminates the
+ * program.
+=============================================================================*/
 
 void	key_hooks(void *param)
 {
@@ -31,6 +50,7 @@ void	close_hook(void *param)
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
 	{
 		mlx_close_window(fdf->mlx);
+		mlx_terminate(fdf->mlx);
 		exit(EXIT_SUCCESS);
 	}
 }

@@ -6,17 +6,17 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:10 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/03/30 17:40:21 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/04/06 10:17:51 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "fdf.h"
 
 /*==============================================================================
  * Int main checks for argument count and initializes the fdf instance.
- * It further handles the map parsing function, image setup, 
- * grid initialization, initial map projection, checks keyhooks
- * and loops the function.
+ * It further handles the map parsing function, image setup,
+ * grid initialization, initial map projection, checks keyhooks, puts
+ * instructions on screen and loops the function.
  * 
  * Main expects 1 argument; that is the relative path to a ".fdf" map file
  * in the "/maps" folder.
@@ -30,12 +30,12 @@ static void	put_instructions(t_instance fdf)
 	x = 10;
 	y = 10;
 	mlx_put_string(fdf.mlx, "Instructions:", x, y);
-	mlx_put_string(fdf.mlx, "Move map:							W/A/S/D", \
-		x, y += 20);
-	mlx_put_string(fdf.mlx, "Rotate X axis:		R/T", x, y += 20);
-	mlx_put_string(fdf.mlx, "Rotate Y axis:		F/G", x, y += 20);
-	mlx_put_string(fdf.mlx, "Rotate Z axis:		V/B", x, y += 20);
-	mlx_put_string(fdf.mlx, "Reset map:						0", x, y += 20);
+	mlx_put_string(fdf.mlx, "Move map:       W/A/S/D", x, y += 20);
+	mlx_put_string(fdf.mlx, "Zoom:           Q/E", x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate X axis:  R/T", x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate Y axis:  F/G", x, y += 20);
+	mlx_put_string(fdf.mlx, "Rotate Z axis:  V/B", x, y += 20);
+	mlx_put_string(fdf.mlx, "Reset map:      0", x, y += 20);
 }
 
 static bool	initialize(mlx_t **mlx, char *title)
@@ -67,8 +67,6 @@ int	main(int argc, char const **argv)
 }
 
 /* TODO
- * Clean up code and files.
- * Setup naming scheme.
  * Check for leaks and malloc protections.
  * Finish up documentation.
 */

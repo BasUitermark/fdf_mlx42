@@ -6,13 +6,13 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:01 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/03/30 19:16:03 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/04/06 10:17:17 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "fdf.h"
 
-void	execute_move(t_instance *fdf)
+static void	execute_move(t_instance *fdf)
 {
 	mlx_delete_image(fdf->mlx, fdf->img);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
@@ -56,20 +56,12 @@ void	zoom(t_instance *fdf)
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q))
 	{
 		if (fdf->grid.size < 75)
-		{
 			fdf->grid.size += 1;
-			// fdf->grid.x_offset += 25;
-			// fdf->grid.y_offset += 25;
-		}
 	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_E))
 	{
 		if (fdf->grid.size > 2)
-		{
 			fdf->grid.size -= 1;
-			// fdf->grid.x_offset -= 25;
-			// fdf->grid.y_offset -= 25;
-		}
 	}
 	execute_move(fdf);
 }
