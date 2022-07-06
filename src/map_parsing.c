@@ -6,22 +6,11 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/12 09:26:50 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 15:30:21 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:05:07 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-
-/*==============================================================================
- * Reads an ".fdf" file , through the passed argv argument,stores the data 
- * in a string and converts it to an int array and stores this in a struct.
- * It also counts the width and height of the map and stores this in the same
- * struct.
- * 
- * parse_map expects a string that has the relative filepath to the mapfile.
- * parse map return a t_map struct with: map.map_points, map.map_width, 
- * map.map_height.
-=============================================================================*/
 
 static int	count_width(char *str_map)
 {

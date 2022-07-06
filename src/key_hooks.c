@@ -6,18 +6,11 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 10:18:02 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 10:27:34 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:05:30 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*==============================================================================
- * key_hook controll the input for the location, zoom and rotation.
- * 
- * close_hook checks for the closing key, stops rendering mlx and terminates the
- * program.
-=============================================================================*/
 
 void	key_hooks(void *param)
 {
