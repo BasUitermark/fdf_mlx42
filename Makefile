@@ -1,10 +1,6 @@
 #===============================================================================: Filename
 NAME		= fdf
 
-#===============================================================================: Directory paths
-SRCS_DIRS	= $(addprefix src/, $(dir))
-OBJS_DIRS	= $(addprefix objs/, $(dir))
-
 #===============================================================================: Source to object conversion location
 OBJS		= $(subst src, objs, $(SRCS:.c=.o))
 

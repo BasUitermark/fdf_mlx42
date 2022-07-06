@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   map_parsing.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/12 09:26:50 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/07/06 15:30:21 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 /*==============================================================================
@@ -64,30 +76,40 @@ static t_map	process(char *str_map, int depth_count)
 	return (map);
 }
 
-t_map	parse_map(const char *filepath)
+char	*read_map(int fd, int *depth_count)
 {
-	int		fd;
-	int		depth_count;
 	char	*temp;
 	char	*str_map;
 
-	depth_count = 0;
 	str_map = NULL;
-	fd = open(filepath, O_RDONLY);
-	if (fd < 0 || !ft_strnstr(filepath, ".fdf", ft_strlen(filepath)))
-		error(RED"Invalid pathname! Needs to be \".fdf\""RESET);
 	while (true)
 	{
 		temp = ft_get_next_line(fd);
 		if (temp)
 		{
 			str_map = ft_strappend(str_map, temp);
-			depth_count++;
+			*depth_count += 1;
 		}
 		else
 			break ;
 		free(temp);
 	}
+	return (str_map);
+}
+
+t_map	parse_map(const char *filepath)
+{
+	int		fd;
+	int		depth_count;
+	char	*str_map;
+
+	depth_count = 0;
+	fd = open(filepath, O_RDONLY);
+	if (fd < 0 || !ft_strnstr(filepath, ".fdf", ft_strlen(filepath)))
+		error("Invalid pathname! Path needs to end on: \".fdf\"!");
+	str_map = read_map(fd, &depth_count);
+	if (!str_map)
+		error("Failed to read map!");
 	close(fd);
 	return (process(str_map, depth_count));
 }

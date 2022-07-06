@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:01 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/04/06 10:17:17 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:33:45 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	execute_move(t_instance *fdf)
 {
 	mlx_delete_image(fdf->mlx, fdf->img);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	if (!fdf->img)
+		error("Failed to generate new image!");
 	project_map(*fdf);
 }
 

@@ -6,17 +6,11 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:16 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/04/06 10:18:19 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 15:41:58 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*==============================================================================
- * calc_coord sets up the line length, the processed rotation, the initial
- * rotation, the placement and the processed rotation of the grid.
- * 
-=============================================================================*/
 
 static void	x_rotation(int *y, int *z, double x_rot)
 {
@@ -51,7 +45,7 @@ static void	z_rotation(int *x, int *y, double z_rot)
 	*y = temp_x * sin(z_rot) + temp_y * cos(z_rot);
 }
 
-static void	initial_rotate(int *x, int *y)
+static void	iso_rotation(int *x, int *y)
 {
 	int	temp_x;
 	int	temp_y;
@@ -69,7 +63,7 @@ t_coord	calc_coord(t_instance fdf, int x, int y, int z)
 	x_rotation(&y, &z, fdf.grid.x_rot);
 	y_rotation(&x, &z, fdf.grid.y_rot);
 	z_rotation(&x, &y, fdf.grid.z_rot);
-	initial_rotate(&x, &y);
+	iso_rotation(&x, &y);
 	x += WIDTH / 2 - fdf.grid.x_offset;
 	y += -z + HEIGHT / 2 - fdf.grid.y_offset;
 	return (translate_coord(x, y));

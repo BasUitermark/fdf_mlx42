@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_line.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/12 09:39:39 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/07/05 15:11:33 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 static int	axis(int start, int end)
@@ -7,6 +19,7 @@ static int	axis(int start, int end)
 	else
 		return (-1);
 }
+
 
 static void	setup(t_coord start, t_coord end, t_coord *diff, t_coord *incr)
 {

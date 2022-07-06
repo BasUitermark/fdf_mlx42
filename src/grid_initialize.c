@@ -1,12 +1,16 @@
-#include "../include/fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   grid_initialize.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/04/12 09:26:30 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/07/06 10:22:26 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*==============================================================================
- * set_grid_param initializes the the grid parameters and sets up de z_offset
- * to make sure the height of the map isn't too big.
- * 
- * check_grid makes sure that when the grid is drawn in its initial angled
- * state it won't go over the boundaries of the window.
-=============================================================================*/
+#include "../include/fdf.h"
 
 static double	set_height_mod(t_map map)
 {

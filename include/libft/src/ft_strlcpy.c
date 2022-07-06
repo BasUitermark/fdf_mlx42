@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/07/05 13:49:36 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/07/05 15:14:26 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/libft.h"
 
 t_size	ft_strlcpy(char *dst, const char *src, size_t n)
@@ -9,7 +21,7 @@ t_size	ft_strlcpy(char *dst, const char *src, size_t n)
 		return (srclen);
 	if (srclen + 1 < n)
 		ft_memcpy(dst, src, srclen + 1);
-	 else if (n != 0)
+	else if (n != 0)
 	{
 		ft_memcpy(dst, src, n - 1);
 		dst[n - 1] = '\0';

@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 10:18:02 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/04/06 10:24:49 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 10:27:34 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	close_hook(void *param)
 	{
 		mlx_close_window(fdf->mlx);
 		mlx_terminate(fdf->mlx);
+		free (fdf->map.points);
 		exit(EXIT_SUCCESS);
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_dlstinsert_after.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/07/05 13:46:32 by buiterma      #+#    #+#                 */
+/*   Updated: 2022/07/05 13:46:32 by buiterma      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/libft.h"
 
 void	ft_dlstinsert_after(t_dlist *prev_node, t_dlist *new_item)

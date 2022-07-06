@@ -6,21 +6,11 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:10 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/04/06 10:17:51 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 11:00:49 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*==============================================================================
- * Int main checks for argument count and initializes the fdf instance.
- * It further handles the map parsing function, image setup,
- * grid initialization, initial map projection, checks keyhooks, puts
- * instructions on screen and loops the function.
- * 
- * Main expects 1 argument; that is the relative path to a ".fdf" map file
- * in the "/maps" folder.
-=============================================================================*/
 
 static void	put_instructions(t_instance fdf)
 {
@@ -55,8 +45,13 @@ int	main(int argc, char const **argv)
 	if (initialize(&fdf.mlx, "FdF"))
 	{
 		fdf.map = parse_map(argv[1]);
-		fdf.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
 		initialize_grid(&fdf);
+		fdf.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
+		if (!fdf.img)
+		{
+			free(fdf.map.points);
+			error("Failed to generate new image!");
+		}
 		put_instructions(fdf);
 		project_map(fdf);
 		mlx_loop_hook(fdf.mlx, &key_hooks, &fdf);
@@ -65,8 +60,3 @@ int	main(int argc, char const **argv)
 	}
 	error("Failed to initialize FdF");
 }
-
-/* TODO
- * Check for leaks and malloc protections.
- * Finish up documentation.
-*/
