@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 10:20:27 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 15:41:43 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/06 15:47:17 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "../include/MLX42/include/MLX42/MLX42.h"
 # include "../include/libft/include/libft.h"
-# include <stdio.h> //DELETE THIS
 # define WIDTH 1920
 # define HEIGHT 1080
 
