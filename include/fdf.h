@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 10:20:27 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 15:47:17 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/07 12:46:00 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <math.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include "../include/MLX42/include/MLX42/MLX42.h"
 # include "../include/libft/include/libft.h"
 # define WIDTH 1920
@@ -59,11 +60,13 @@ typedef struct s_instance
 //== Functions ==//
 
 /**
- * @brief Checks for a correct arg count and runs the initialization function to setup the mlx instance.
- * If the initilialize function doesn't fail it will run the map parser, initialize grid variables, 
- * setup an image, puts instructions on the image, project the map on the image and 
- * put it on display, checks for key inputs and loop the function.
- * If the initialize function fails, the program will exot.
+ * @brief Checks for a correct arg count and runs the initialization
+ * function to setup the mlx instance.
+ * If the initilialize function doesn't fail it will run the map parser,
+ * initialize grid variables, setup an image, puts instructions on the image,
+ * project the map on the image and put it on display,
+ * checks for key inputs and loop the function.
+ * If the initialize function fails, the program will exit.
  * 
  * @param argc Argument count.
  * @param argv Arguments.
@@ -71,10 +74,10 @@ typedef struct s_instance
 int		main(int argc, char const **argv);
 
 /**
- * @brief Reads an ".fdf" file , through the passed argv argument,stores the data 
- * in a string and converts it to an int array and stores this in a struct.
- * It also counts the width and height of the map and stores this in the same
- * struct.
+ * @brief Reads an ".fdf" file , through the passed argv argument,
+ * stores the data in a string and converts it to an int array and 
+ * stores this in a struct. It also counts the width and height of the map and
+ * stores this in the same struct.
  * 
  * @param filepath The relative path to the mapfile.
  * @return t_map The t_map struct with: map.map_points, map.map_width,
@@ -83,8 +86,10 @@ int		main(int argc, char const **argv);
 t_map	parse_map(const char *filepath);
 
 /**
- * @brief The error handling function. If a system call returns an error it will display this error. 
- * Otherwise it will display a premade error message to the standard error filedescriptor.
+ * @brief The error handling function.
+ * If a system call returns an error it will display this error. 
+ * Otherwise it will display a premade error message to
+ * the standard error filedescriptor.
  * 
  * @param error_msg The message to be displayed 
  */
@@ -101,7 +106,8 @@ void	initialize_grid(t_instance *fdf);
 
 /**
  * @brief This function will calculate a path of pixels to draw a line on.
- * It does this by calulating a boundary value that, depending if it is above or below zero,
+ * It does this by calulating a boundary value that,
+ * depending if it is above or below zero,
  * will switch the itteration between the x or y coordinate.
  * 
  * 
@@ -116,9 +122,11 @@ void	draw_line(mlx_image_t *img, t_coord start, t_coord end);
  * the grid drawing. Draw grid then draws a line to the right and down, and
  * calculates an offset through calc_coord.
  * 
- * get_height simply looks for the appropriate point in map.points by the product
- * y and map.width, which gives the row. Adding x gives the appropriate column number in
- * the row. z_offset then normalizes the (height) map point to be within the window size bounds.
+ * get_height simply looks for the appropriate point in
+ * map.points by the product y and map.width, which gives the row.
+ * Adding x gives the appropriate column number in
+ * the row. z_offset then normalizes the (height) map point to
+ * be within the window size bounds.
  * 
  * @param fdf The instance where mlx and the image is located.
  */
@@ -134,9 +142,11 @@ void	project_map(t_instance fdf);
 t_coord	translate_coord(int x, int y);
 
 /**
- * @brief Sets up the line length(grid size), recalculates the rotation if necessary, the iso
- * rotation (isometric view), the placement and the processed coordinate.
+ * @brief Sets up the line length(grid size), recalculates the rotation
+ * if necessary, the iso rotation (isometric view), the placement and
+ * the processed coordinate.
  * 
+ * Iso rotation: Clockwise rotation
  * @param fdf The instance where the grid struct is located.
  * @param x The x coordinate.
  * @param y The y coordinate.
@@ -147,7 +157,8 @@ t_coord	calc_coord(t_instance fdf, int x, int y, int z);
 
 /**
  * @brief Checks if the close hook has been used.
- * If it has been used it will close the windown, terminate mlx instance and exit the program.
+ * If it has been used it will close the windown,
+ * terminate mlx instance and exit the program.
  * 
  * @param param The fdf instance.
  */
@@ -155,30 +166,33 @@ void	close_hook(void *param);
 
 /**
  * @brief Checks if a motion hook has been used.
- * If one has been used it will check which one and execute the appropiate function.
+ * If one has been used it will check which one and
+ * execute the appropiate function.
  * 
  * @param param The fdf instance.
  */
 void	key_hooks(void *param);
 
 /**
- * @brief Increases or decreases the x or y coordinate and reloads the image with the recalculated
- * coordinates.
+ * @brief Increases or decreases the x or y coordinate and
+ * reloads the image with the recalculated coordinates.
  * 
  * @param fdf The fdf instance.
  */
 void	location(t_instance *fdf);
 
 /**
- * @brief Increases or decreases the gridsize and reloads the image with the recalculated coordinates.
+ * @brief Increases or decreases the gridsize and
+ * reloads the image with the recalculated coordinates.
  * 
  * @param fdf The fdf instance.
  */
 void	zoom(t_instance *fdf);
 
 /**
- * @brief Increases or decreases the x, y or z rotation value which adjusts the where the coordinate
- * will be located in 3D space and reloads the image with the recalculated coordinates.
+ * @brief Increases or decreases the x, y or z rotation value,
+ * which adjusts to where the coordinate will be located in 3D space,
+ * and reloads the image with the recalculated coordinates.
  * @param fdf The fdf instance.
  */
 void	rotation(t_instance *fdf);

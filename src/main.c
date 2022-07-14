@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/30 16:02:10 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 11:00:49 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/12 09:52:52 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,9 @@ int	main(int argc, char const **argv)
 		mlx_loop_hook(fdf.mlx, &close_hook, &fdf);
 		mlx_loop(fdf.mlx);
 	}
-	error("Failed to initialize FdF");
+	else
+		error("Failed to initialize FdF");
+	mlx_terminate(fdf.mlx);
+	free (fdf.map.points);
+	exit(EXIT_SUCCESS);
 }

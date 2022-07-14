@@ -6,7 +6,7 @@
 /*   By: buiterma <buiterma@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/12 09:26:50 by buiterma      #+#    #+#                 */
-/*   Updated: 2022/07/06 17:05:07 by buiterma      ########   odam.nl         */
+/*   Updated: 2022/07/12 10:10:57 by buiterma      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ t_map	parse_map(const char *filepath)
 	char	*str_map;
 
 	depth_count = 0;
+	if (!ft_strnstr(filepath, ".fdf", ft_strlen(filepath)))
+		error("Invalid pathname! Name must include \".fdf\"!");
 	fd = open(filepath, O_RDONLY);
-	if (fd < 0 || !ft_strnstr(filepath, ".fdf", ft_strlen(filepath)))
-		error("Invalid pathname! Path needs to end on: \".fdf\"!");
+	if (fd < 0)
+		error("Failed to open file!");
 	str_map = read_map(fd, &depth_count);
 	if (!str_map)
 		error("Failed to read map!");
